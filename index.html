@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Case Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-balance-scale"></i> LexManager
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" data-view="dashboard">
+                    <i class="fas fa-chart-pie"></i> Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="cases">
+                    <i class="fas fa-briefcase"></i> Cases
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="clients">
+                    <i class="fas fa-users"></i> Clients
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="lawyers">
+                    <i class="fas fa-user-tie"></i> Lawyers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="leads">
+                    <i class="fas fa-funnel-dollar"></i> Leads
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="calendar">
+                    <i class="fas fa-calendar-alt"></i> Calendar
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="documents">
+                    <i class="fas fa-file-alt"></i> Documents
+                </a>
+            </li>
+        </ul>
+        <div class="user-profile">
+            <div class="avatar">JD</div>
+            <div class="user-info">
+                <h4>John Doe</h4>
+                <p>Senior Partner</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Dashboard View -->
+        <div id="view-dashboard" class="view-section">
+            <header class="header">
+                <div class="page-title">
+                    <h1>Dashboard</h1>
+                    <p>Overview of your firm's performance.</p>
+                </div>
+                <button class="btn-primary" id="add-case-btn">
+                    <i class="fas fa-plus"></i> New Case
+                </button>
+            </header>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #e0f2fe; color: #0284c7;">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>24</h3>
+                        <p>Active Cases</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #fef9c3; color: #ca8a04;">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Pending Review</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #dcfce7; color: #166534;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>156</h3>
+                        <p>Cases Closed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #f3e8ff; color: #9333ea;">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>8</h3>
+                        <p>Hearings This Week</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Cases Table -->
+            <section class="table-container">
+                <div class="table-header">
+                    <h2>Recent Cases</h2>
+                    <div class="search-bar">
+                        <input type="text" id="search-cases" placeholder="Search cases, clients...">
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Case ID</th>
+                            <th>Client</th>
+                            <th>Type</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Last Update</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cases-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+        <!-- Cases View (Reusing Dashboard Table for now, but could be separate) -->
+        <div id="view-cases" class="view-section" style="display: none;">
+            <header class="header">
+                <div class="page-title">
+                    <h1>Cases</h1>
+                    <p>Manage all judicial and extrajudicial processes.</p>
+                </div>
+                <button class="btn-primary" onclick="document.getElementById('add-case-btn').click()">
+                    <i class="fas fa-plus"></i> New Case
+                </button>
+            </header>
+            <div class="table-container">
+                <!-- We will reuse the same table body ID for simplicity in this prototype, 
+                     or we could clone it. For now, let's just show a placeholder or duplicate the table structure.
+                     To keep it simple, I'll just duplicate the table structure here with a different ID 
+                     so we can render specifically if needed, or just use the same data source. -->
+                <div class="table-header">
+                    <h2>All Cases</h2>
+                    <div class="search-bar">
+                        <input type="text" id="search-all-cases" placeholder="Search...">
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Case ID</th>
+                            <th>Client</th>
+                            <th>Type</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Last Update</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-cases-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Clients View -->
+        <div id="view-clients" class="view-section" style="display: none;">
+            <header class="header">
+                <div class="page-title">
+                    <h1>Clients</h1>
+                    <p>Manage your client relationships.</p>
+                </div>
+                <button class="btn-primary" id="add-client-btn">
+                    <i class="fas fa-user-plus"></i> Add Client
+                </button>
+            </header>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Active Cases</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clients-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Lawyers View -->
+        <div id="view-lawyers" class="view-section" style="display: none;">
+            <header class="header">
+                <div class="page-title">
+                    <h1>Lawyers</h1>
+                    <p>Manage your legal team.</p>
+                </div>
+                <button class="btn-primary" id="add-lawyer-btn">
+                    <i class="fas fa-user-plus"></i> Add Lawyer
+                </button>
+            </header>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Specialization</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Active Cases</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lawyers-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Leads View -->
+        <div id="view-leads" class="view-section" style="display: none;">
+            <header class="header">
+                <div class="page-title">
+                    <h1>Leads</h1>
+                    <p>Track potential clients and opportunities.</p>
+                </div>
+                <button class="btn-primary" id="add-lead-btn">
+                    <i class="fas fa-user-plus"></i> Add Lead
+                </button>
+            </header>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Interest</th>
+                            <th>Contact</th>
+                            <th>Status</th>
+                            <th>Date Added</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leads-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Calendar View -->
+        <div id="view-calendar" class="view-section" style="display: none;">
+            <header class="header">
+                <div class="page-title">
+                    <h1>Calendar</h1>
+                    <p>Upcoming hearings and deadlines.</p>
+                </div>
+                <div class="calendar-actions">
+                    <button class="btn-primary">
+                        <i class="fas fa-calendar-plus"></i> Add Event
+                    </button>
+                </div>
+            </header>
+            <div class="calendar-grid" id="calendar-container">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Event</th>
+                                <th>Case Ref</th>
+                                <th>Location</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendar-table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documents View -->
+        <div id="view-documents" class="view-section" style="display: none;">
+            <header class="header">
+                <div class="page-title">
+                    <h1>Documents</h1>
+                    <p>Recent files and contracts.</p>
+                </div>
+                <button class="btn-primary">
+                    <i class="fas fa-file-upload"></i> Upload
+                </button>
+            </header>
+            <div class="documents-grid" id="documents-container">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Case Modal -->
+    <div id="add-case-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Case</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="new-case-form">
+                <div class="form-group">
+                    <label for="client-name">Client Name</label>
+                    <input type="text" id="client-name" required placeholder="Enter client name">
+                </div>
+                <div class="form-group">
+                    <label for="case-category">Category</label>
+                    <select id="case-category" required>
+                        <option value="Judicial">Judicial</option>
+                        <option value="Extrajudicial">Extrajudicial</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="case-type">Case Type</label>
+                    <select id="case-type" required>
+                        <option value="">Select Type</option>
+                        <option value="Corporate">Corporate</option>
+                        <option value="Criminal">Criminal</option>
+                        <option value="Civil Litigation">Civil Litigation</option>
+                        <option value="Family Law">Family Law</option>
+                        <option value="Intellectual Property">Intellectual Property</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="case-desc">Description</label>
+                    <textarea id="case-desc" rows="3" placeholder="Brief description of the case"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Case</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Case Details Modal -->
+    <div id="view-case-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Case Details</h2>
+                <button class="close-btn-details">&times;</button>
+            </div>
+            <div class="modal-body" id="view-case-body">
+                <!-- Populated by JS -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="close-view-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
